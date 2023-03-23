@@ -20,7 +20,27 @@ class MarkovMachine {
      *
      */
     makeChains() {
-        // TODO
+
+        const chains = {};
+        let ind = 0;
+        let word;
+        let nextWord;
+
+        while (ind < this.words.length) {
+
+            word = this.words[ind];
+            nextWord = this.words[ind + 1];
+
+            if (chains[word] === undefined) {
+                chains[word] = [];
+            }
+
+            // Add next word to list for current word if next word exists
+            nextWord !== undefined ? chains[word].push(nextWord) : chains[word].push(null);
+            ind++;
+        }
+
+        this.chains = chains;
     }
 
 
