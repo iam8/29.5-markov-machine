@@ -1,3 +1,6 @@
+// Ioana A Mititean
+// Exercise 29.5: Markov Machine
+
 /** Textual markov chain generator */
 
 
