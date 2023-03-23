@@ -46,7 +46,29 @@ class MarkovMachine {
 
     /** Return random text from chains. */
     makeText(numWords=100) {
-        // TODO
+
+        const result = [];
+        let choices = Object.keys(this.chains);
+        let randInd;
+        let chosen;
+
+        while (result.length < numWords) {
+
+            // Choose a random word
+            randInd = Math.floor(Math.random() * choices.length);
+            chosen = choices[randInd];
+
+            if (chosen === null) {
+                break;
+            }
+
+            result.push(chosen);
+
+            // Repeat process for chosen word
+            choices = this.chains[chosen];
+        }
+
+        return result.join(" ");
     }
 }
 
