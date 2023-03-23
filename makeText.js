@@ -19,6 +19,14 @@ if (args.length === 2) {
     if (type.toLowerCase() === "file") {
 
         // Read in the file
+        fs.readFile(path, "utf8", (err, data) => {
+            if (err) {
+                console.log(`Error reading file ${path}: ${err}`);
+                process.exit(1);
+            }
+
+            console.log(data);
+        })
 
         // Pass file data to markov to generate text
 
