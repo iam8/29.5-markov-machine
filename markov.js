@@ -29,3 +29,8 @@ class MarkovMachine {
         // TODO
     }
 }
+
+
+module.exports = {
+    MarkovMachine: MarkovMachine
+};
