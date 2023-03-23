@@ -1,32 +1,31 @@
 // Ioana A Mititean
 // Exercise 29.5: Markov Machine
 
-/** Textual markov chain generator */
+/** Textual Markov Chain generator. */
 
 
 class MarkovMachine {
 
-  /** build markov machine; read in text.*/
-
-  constructor(text) {
-    let words = text.split(/[ \r\n]+/);
-    this.words = words.filter(c => c !== "");
-    this.makeChains();
+    /** Build Markov machine; read in text.*/
+    constructor(text) {
+        let words = text.split(/[ \r\n]+/);
+        this.words = words.filter(c => c !== "");
+        this.makeChains();
   }
 
-  /** set markov chains:
-   *
-   *  for text of "the cat in the hat", chains will be
-   *  {"the": ["cat", "hat"], "cat": ["in"], "in": ["the"], "hat": [null]} */
+    /** Set markov chains:
+     *
+     *  For text of "the cat in the hat", chains will be
+     *  {"the": ["cat", "hat"], "cat": ["in"], "in": ["the"], "hat": [null]}
+     *
+     */
+    makeChains() {
+        // TODO
+    }
 
-  makeChains() {
-    // TODO
-  }
 
-
-  /** return random text from chains */
-
-  makeText(numWords = 100) {
-    // TODO
-  }
+    /** Return random text from chains. */
+    makeText(numWords=100) {
+        // TODO
+    }
 }
