@@ -95,9 +95,13 @@ describe("Tests for makeText() instance method of MarkovMachine.", function () {
             }
     })
 
-    // test("makeText() should return text that contains only words from the input text.",
-    //     function () {
+    test("makeText() should return text that contains only words from the input text.",
+        function () {
 
+            const result = mm.makeText().split(/[ \r\n]+/);
 
-    // })
+            for (let word of result) {
+                expect(mm.words).toContain(word);
+            }
+    })
 })
