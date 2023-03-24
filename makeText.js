@@ -8,10 +8,18 @@ const fs = require("fs");
 const { MarkovMachine } = require("./markov");
 
 
+/** Generate and display (to console) Markov text from the given input text. */
+function generateMarkovText(text) {
+
+    const mm = new MarkovMachine(text);
+    console.log(mm.makeText(500));
+}
+
+/** Fetch and return the data from the given URL (if valid). */
 async function getDataFromUrl(url) {
 
     let data;
-    // Get text data from the given URL (Axios)
+
     try {
         data = await axios.get(url);
     } catch (err) {
@@ -23,6 +31,30 @@ async function getDataFromUrl(url) {
 }
 
 
+/** Generate and display Markov text from a given file path. */
+function makeText(filepath) {
+
+    // Read in the file
+    fs.readFile(filepath, "utf8", (err, data) => {
+        if (err) {
+            console.log(`Error reading file ${filepath}: ${err}`);
+            process.exit(1);
+        }
+
+        generateMarkovText(data);
+    })
+}
+
+
+/** Generate and display Markov text from a given URL. */
+async function makeUrlText(url) {
+
+    const urlData = await getDataFromUrl(url);
+    generateMarkovText(urlData.data);
+}
+
+
+/** Retrieve and interpret command-line inputs. */
 async function main() {
     const args = process.argv.slice(2);
 
@@ -31,30 +63,13 @@ async function main() {
         const path = args[1];
 
         if (type.toLowerCase() === "file") {
-
-            // Read in the file
-            fs.readFile(path, "utf8", (err, data) => {
-                if (err) {
-                    console.log(`Error reading file ${path}: ${err}`);
-                    process.exit(1);
-                }
-
-                // Pass file data to markov to generate text
-                const mm = new MarkovMachine(data);
-                console.log(mm.makeText(300));
-            })
+            makeText(path);
         }
 
         if (type.toLowerCase() === "url") {
-
-            const urlData = await getDataFromUrl(path);
-
-            // Pass URL data to markov to generate text
-            const mm = new MarkovMachine(urlData.data);
-            console.log(mm.makeText(300));
+            await makeUrlText(path);
         }
     }
-
 }
 
 main();
