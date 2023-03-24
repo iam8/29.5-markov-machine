@@ -39,7 +39,7 @@ describe("Tests for makeChains() instance method of MarkovMachine.", function ()
             const mm = new MarkovMachine("");
 
             expect(mm.chains).toEqual({});
-        })
+    })
 
     test("For input text without repeated words, makeChains() should set the chains property " +
          "to an object with the appropriate entries.",
@@ -53,6 +53,13 @@ describe("Tests for makeChains() instance method of MarkovMachine.", function ()
             }
 
             expect(mm.chains).toEqual(expected);
-        })
+    })
 
+    test("For input text with repeated words, makeChains() should set the chains property " +
+        "to an object with the appropriate entries.",
+        function () {
+
+
+
+    })
 })
