@@ -69,3 +69,35 @@ describe("Tests for makeChains() instance method of MarkovMachine.", function ()
             expect(mm.chains).toEqual(expected);
     })
 })
+
+
+describe("Tests for makeText() instance method of MarkovMachine.", function () {
+
+    const mmEmpty = new MarkovMachine("");
+    const mm = new MarkovMachine("the cat in the hat");
+
+    test("makeText() should return an empty string if an empty input text is used.",
+        function () {
+
+            expect(mmEmpty.makeText()).toEqual("");
+    })
+
+    test("makeText() should return text with the number of words less than or equal to the " +
+    "given numWords argument.",
+        function () {
+
+            for (let i = 0; i < 5; i++) {
+                const result1 = mm.makeText(100).split(/[ \r\n]+/);
+                expect(result1.length).toBeLessThanOrEqual(100);
+
+                const result2 = mm.makeText(2).split(/[ \r\n]+/);
+                expect(result2.length).toBeLessThanOrEqual(2);
+            }
+    })
+
+    // test("makeText() should return text that contains only words from the input text.",
+    //     function () {
+
+
+    // })
+})
