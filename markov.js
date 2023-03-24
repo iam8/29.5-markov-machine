@@ -52,6 +52,9 @@ class MarkovMachine {
         let randInd;
         let chosen;
 
+        // Case for empty input text
+        if (this.words.length === 0) return "";
+
         while (result.length < numWords) {
 
             // Choose a random word
