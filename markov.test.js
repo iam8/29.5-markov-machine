@@ -58,8 +58,14 @@ describe("Tests for makeChains() instance method of MarkovMachine.", function ()
     test("For input text with repeated words, makeChains() should set the chains property " +
         "to an object with the appropriate entries.",
         function () {
+            const mm = new MarkovMachine("Some Some sample text text");
 
+            const expected = {
+                "Some": ["Some", "sample"],
+                "sample": ["text"],
+                "text": ["text", null]
+            }
 
-
+            expect(mm.chains).toEqual(expected);
     })
 })
