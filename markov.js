@@ -29,14 +29,14 @@ class MarkovMachine {
         while (ind < this.words.length) {
 
             word = this.words[ind];
-            nextWord = this.words[ind + 1];
+            nextWord = this.words[ind + 1] || null;
 
             if (chains[word] === undefined) {
                 chains[word] = [];
             }
 
-            // Add next word to list for current word if next word exists
-            nextWord !== undefined ? chains[word].push(nextWord) : chains[word].push(null);
+            // Add next word to list for current word
+            chains[word].push(nextWord);
             ind++;
         }
 
