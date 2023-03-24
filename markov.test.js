@@ -7,7 +7,7 @@ const fs = require("fs");
 const { MarkovMachine } = require("./markov");
 
 
-describe("MarkovMachine constructor", function () {
+describe("Tests for MarkovMachine constructor.", function () {
 
     test("For an empty input text, resulting words list should be empty.", function () {
         const mm = new MarkovMachine("");
@@ -31,3 +31,28 @@ describe("MarkovMachine constructor", function () {
 })
 
 
+describe("Tests for makeChains() instance method of MarkovMachine.", function () {
+
+    test("For an empty input text, makeChains() should set the chains property to an empty " +
+         "object.",
+        function () {
+            const mm = new MarkovMachine("");
+
+            expect(mm.chains).toEqual({});
+        })
+
+    test("For input text without repeated words, makeChains() should set the chains property " +
+         "to an object with the appropriate entries.",
+        function () {
+            const mm = new MarkovMachine("Some sample text");
+
+            const expected = {
+                "Some": ["sample"],
+                "sample": ["text"],
+                "text": [null]
+            }
+
+            expect(mm.chains).toEqual(expected);
+        })
+
+})
