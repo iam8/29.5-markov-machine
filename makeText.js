@@ -12,7 +12,7 @@ const { MarkovMachine } = require("./markov");
 function generateMarkovText(text) {
 
     const mm = new MarkovMachine(text);
-    console.log(mm.makeText(500));
+    console.log(mm.makeText(500) + ".");
 }
 
 /** Fetch and return the data from the given URL (if valid). */
