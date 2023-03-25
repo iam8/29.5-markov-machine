@@ -99,12 +99,12 @@ describe("Tests for makeText() instance method of MarkovMachine.", function () {
         }
     })
 
-    test("The final word in the text returned by makeText() should be the same as the final " +
-    "word in the original input text.",
+    test("For input text with the number of words fewer than the specified numWords " +
+    "argument, the final word in the text returned by makeText() should be the same as the " + "final word in the original input text.",
     function () {
 
         for (let i = 0; i < 5; i++) {
-            const result = mm.makeText().split(/[ \r\n]+/);
+            const result = mm.makeText(100).split(/[ \r\n]+/);
             expect(result.at(-1)).toEqual(mm.words.at(-1));
         }
     })
